@@ -1,0 +1,5 @@
+[custom.all.positive-nat]
+type = "local"
+path = "."
+ipkg = "positive-nat.ipkg"
+test = "tests/tests.ipkg"

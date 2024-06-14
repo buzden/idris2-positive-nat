@@ -1,0 +1,14 @@
+package positive-nat
+
+authors = "Denis Buzdalov"
+
+brief = "Strictly positive natural number data type"
+
+license = "Apache-2.0"
+
+sourcedir = "src"
+builddir = ".build"
+
+depends = typelevel-emptiness-collections
+
+modules = Data.Nat1

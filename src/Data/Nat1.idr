@@ -93,6 +93,7 @@ gcd' (FromNat n) (FromNat m) = gcd n m
 
 --- Working with weighted lists ---
 
+-- TODO to make this to be dependent on some interface for lazy folding of non-empty collections
 export
 pickWeighted : LazyLst1 (Nat1, a) -> Nat -> a
 pickWeighted [(_, x)]                     _ = x
