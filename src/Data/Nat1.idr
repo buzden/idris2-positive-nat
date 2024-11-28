@@ -85,7 +85,7 @@ gcd : (a, b : Nat) -> (0 ok : Either (IsSucc a) (IsSucc b)) => Nat1
 gcd Z Z       = void $ absurd ok
 gcd a@(S _) Z = FromNat a
 gcd Z b@(S _) = FromNat b
-gcd a (S b)   = assert_total $ gcd (S b) (modNatNZ a (S b) SIsNonZero)
+gcd a (S b)   = assert_total $ gcd (S b) (modNatNZ a (S b) %search)
 
 export
 gcd' : Nat1 -> Nat1 -> Nat1
@@ -109,4 +109,4 @@ normaliseWeights : Foldable f => Functor f => f (Nat1, a) -> f (Nat1, a)
 normaliseWeights xs = do
   let Just $ FromNat (S d) = foldmne gcd' $ Builtin.fst <$> xs
     | Nothing => xs
-  flip map xs $ mapFst $ \(FromNat n) => FromNat (divNatNZ n (S d) SIsNonZero) @{believe_me $ ItIsSucc {n=1} {- since divisor is GCD -}}
+  flip map xs $ mapFst $ \(FromNat n) => FromNat (divNatNZ n (S d) %search) @{believe_me $ ItIsSucc {n=1} {- since divisor is GCD -}}
