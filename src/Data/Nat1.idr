@@ -29,6 +29,16 @@ toNat, (.asNat) : Nat1 -> Nat
 toNat $ FromNat n = n
 (.asNat) = toNat
 
+--- Implementations of basic interfaces ---
+
+public export
+Eq Nat1 where
+  FromNat n == FromNat n' = n == n'
+
+public export
+Ord Nat1 where
+  compare = comparing $ \(FromNat n) => n
+
 --- Literals syntax support ---
 
 public export %inline
