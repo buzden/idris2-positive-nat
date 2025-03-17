@@ -75,17 +75,21 @@ FromNat (S n) * FromNat (S m) = FromNat (S n * S m)
 namespace Semigroup
 
   public export
-  [ Additive ] Semigroup Nat1 where
+  [Additive] Semigroup Nat1 where
     (<+>) = (+)
 
   public export
-  [ Multiplicative ] Semigroup Nat1 where
+  [Multiplicative] Semigroup Nat1 where
     (<+>) = (*)
 
 namespace Monoid
 
   public export
-  Monoid Nat1 using Nat1.Semigroup.Multiplicative where
+  [Multiplicative] Monoid Nat1 using Nat1.Semigroup.Multiplicative where
+    neutral = 1
+
+  public export
+  [Maximum] Monoid Nat1 using Semigroup.Maximum where
     neutral = 1
 
 --- Greatest common divisor ---
