@@ -42,8 +42,8 @@ Ord Nat1 where
 --- Literals syntax support ---
 
 public export %inline
-fromInteger : (x : Integer) -> (0 _ : So $ x >= 1) => Nat1
-fromInteger x = FromNat (cast x) @{believe_me $ ItIsSucc {n=1}}
+fromInteger : (x : Integer) -> (0 _ : IsSucc $ cast x) => Nat1
+fromInteger x = FromNat $ cast x
 
 export
 Range Nat1 where
