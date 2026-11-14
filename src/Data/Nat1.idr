@@ -42,7 +42,7 @@ Ord Nat1 where
 --- Literals syntax support ---
 
 -- This variant of implementation is a bit cheaty, but effective in terms of memory
-public export %inline
+export %inline
 fromInteger : (x : Integer) -> (0 _ : So $ x >= 1) => Nat1
 fromInteger x = FromNat (cast x) @{believe_me $ ItIsSucc {n=1}}
 
